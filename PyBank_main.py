@@ -10,7 +10,7 @@ total_profit = []
 monthly_profit_change = []
  
 # Open csv
-with open(input_file,newline="", encoding="utf-8") as budget:
+with open(input_file,newline="") as budget:
 
      # Store the contents of budget_data.csv in the variable csvreader
     csvreader = csv.reader(budget,delimiter=",") 
