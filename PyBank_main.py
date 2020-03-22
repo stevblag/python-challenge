@@ -1,8 +1,7 @@
-# Import Dependencies
-import os, csv
+import os
+import csv
 from pathlib import Path 
 
-# Declare file location through pathlib
 input_file = Path("python-challenge", "PyBank", "budget_data.csv")
 
 # Create empty lists to iterate through specific rows for the following variables
@@ -10,34 +9,33 @@ total_months = []
 total_profit = []
 monthly_profit_change = []
  
-# Open csv in default read mode with context manager
+# Open csv
 with open(input_file,newline="", encoding="utf-8") as budget:
 
      # Store the contents of budget_data.csv in the variable csvreader
     csvreader = csv.reader(budget,delimiter=",") 
 
-    # Skip the header labels to iterate with the values
+    # Skip header & iterate
     header = next(csvreader)  
 
-    # Iterate through the rows in the stored file contents
+    # Iterate rows in csv
     for row in csvreader: 
 
-        # Append the total months and total profit to their corresponding lists
+        # Append total months & total profit
         total_months.append(row[0])
         total_profit.append(int(row[1]))
 
-    # Iterate through the profits in order to get the monthly change in profits
+    # Iterate profits to get the monthly change
     for i in range(len(total_profit)-1):
         
-        # Take the difference between two months and append to monthly profit change
+        # Take the difference between months and append to monthly profit change
         monthly_profit_change.append(total_profit[i+1]-total_profit[i])
         
-# Obtain the max and min of the the montly profit change list
+# Obtain max & min of montly profit change list
 max_increase_value = max(monthly_profit_change)
 max_decrease_value = min(monthly_profit_change)
 
-# Correlate max and min to the proper month using month list and index from max and min
-#We use the plus 1 at the end since month associated with change is the + 1 month or next month
+# Correlate max & min to proper month via month list & index
 max_increase_month = monthly_profit_change.index(max(monthly_profit_change)) + 1
 max_decrease_month = monthly_profit_change.index(min(monthly_profit_change)) + 1 
 
