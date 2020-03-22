@@ -12,7 +12,7 @@ li_votes = 0
 otooley_votes = 0
 
 # Open csv
-with open(csv_file_path,newline="", encoding="utf-8") as elections:
+with open(csv_file_path,newline="") as elections:
 
     # Store data under csvreader variable
     csvreader = csv.reader(elections,delimiter=",") 
